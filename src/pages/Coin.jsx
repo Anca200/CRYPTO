@@ -64,11 +64,11 @@ fetchChartData();
          </div>
 
          {/* Chart */}
-         <div className='w-[600px] h-[250px] m-auto'>
+         <div className='w-[600px] h-[250px] m-auto max-lg:w-full'>
          <LineChart chartData={chartData}/>
          </div>
 
-         <div className='w-[600px] m-auto mt-[200px] flex flex-col'>
+         <div className='w-[600px] m-auto mt-[200px] flex flex-col max-lg:w-full'>
       <ul className='flex justify-between p-[10px] border-b-2 border-gray-500 text-gray-200'>
         <li>Crypto Market Rank</li>
         <li>{coinData.market_cap_rank}</li>
