@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "proxy": "https://peaceful-pixie-d78816.netlify.app/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
