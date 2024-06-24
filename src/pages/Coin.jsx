@@ -5,6 +5,13 @@ import { MoonLoader } from 'react-spinners';
 import LineChart from '../components/LineChart';
 
 
+const cors =  require('cors')
+app.use(cors({
+ origin: "https://peaceful-pixie-d78816.netlify.app/",
+ methods: ["GET", "POST", "PUT", "DELETE"]
+}))
+
+
 
 const Coin = () => {
 

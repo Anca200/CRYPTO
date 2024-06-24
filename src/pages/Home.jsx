@@ -3,7 +3,6 @@ import { CoinContext } from '../context/CoinContext';
 import { Link } from 'react-router-dom';
 
 
-
 const Home = () => {
 
      const {allCoin, currency} = useContext(CoinContext);
