@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 
 
 const cors =  require('cors')
-app.use(cors())
+app.use(cors({
+ origin: "https://cool-alpaca-a046c2.netlify.app/",
+ methods: ["GET", "POST", "PUT", "DELETE"]
+}))
 
 const Home = () => {
 
