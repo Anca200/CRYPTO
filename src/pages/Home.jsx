@@ -2,6 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { CoinContext } from '../context/CoinContext';
 import { Link } from 'react-router-dom';
 
+
+const cors =  require('cors')
+app.use(cors())
+
 const Home = () => {
 
      const {allCoin, currency} = useContext(CoinContext);
