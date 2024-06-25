@@ -64,9 +64,16 @@ className="flex justify-around items-center text-center p-[1rem] border-b-2 bord
         </select>
 
             {/*Register*/}
-        <button className='bg-transparent  border-2 border-solid p-[0.2rem] text-gray-200  rounded-[10px]'>
-            Sign Up
-        </button>
+     <Link to="/log">
+     <button className='bg-transparent  border-2 border-solid p-[0.2rem] text-gray-200  rounded-[10px]'>
+    Log In
+    </button>
+     </Link>
+   <Link to="/sign">
+   <button className='bg-transparent  border-2 border-solid p-[0.2rem] text-gray-200  rounded-[10px] ml-[10px]'>
+    Sign Up
+    </button>
+   </Link>
     </div>
     <button onClick={handleNav} className=" hidden max-lg:block z-10">
         <FaBars className='text-gray-200 ' size={20}/>

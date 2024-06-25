@@ -8,6 +8,8 @@ import Home from './pages/Home.jsx';
 import Coin from './pages/Coin.jsx';
 import CoinContextProvider from './context/CoinContext.jsx';
 import Footer from './components/Footer.jsx';
+import SignUp from './pages/SignUp.jsx';
+import LogIn from './pages/LogIn.jsx';
 
 
 const router = createBrowserRouter ([
@@ -21,6 +23,13 @@ const router = createBrowserRouter ([
     {
       path: '/coin/:coinId',
       element: <Coin/>
+    },
+    {
+      path:"/sign",
+      element: <SignUp/>
+    },
+    { path: "/log",
+      element:<LogIn/>
     }
   ]
   }
