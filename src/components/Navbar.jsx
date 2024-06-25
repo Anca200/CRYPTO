@@ -58,7 +58,7 @@ className="flex justify-around items-center text-center p-[1rem] border-b-2 bord
     <div className='max-lg:flex max-lg:flex-col-reverse gap-[10px] items-center '>
         <select 
         onChange={currencyHandler}
-        className='bg-transparent  border-2 border-solid p-[0.2rem] text-gray-200  rounded-[10px]' >
+        className='bg-transparent  border-2 border-solid p-[0.2rem] text-gray-200  rounded-[10px] mr-[10px]' >
             <option  className="bg-blue-900" value="usd">USD</option>
             <option  className="bg-blue-900" value="eur">EUR</option>
         </select>
