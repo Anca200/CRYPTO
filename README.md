@@ -1,4 +1,4 @@
-<h1>Crypto Search</h1>
+<h1>Crypto Search API</h1>
 Live at ->  <a href="https://peaceful-pixie-d78816.netlify.app/">Live</a>
  <hr/>
  

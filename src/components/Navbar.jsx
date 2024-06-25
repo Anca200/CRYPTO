@@ -64,7 +64,7 @@ className="flex justify-around items-center text-center p-[1rem] border-b-2 bord
         </select>
 
             {/*Register*/}
-        <button className='bg-gray-200 rounded-[10px] p-[0.2rem] ml-[1rem] w-[100px]  max-lg:m-0'>
+        <button className='bg-transparent  border-2 border-solid p-[0.2rem] text-gray-200  rounded-[10px]'>
             Sign Up
         </button>
     </div>
