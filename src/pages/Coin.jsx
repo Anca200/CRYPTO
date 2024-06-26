@@ -51,8 +51,8 @@ fetchChartData();
 
   if(coinData && chartData) {
     return (
-      <div className='bg-gradient-to-r from-blue-900 to-slate-900 w-full h-[150vh] max-lg:h-auto p-[50px]'>
-       <div className='p-[10px] bg-chart w-[60%] rounded-[20px] h-auto m-auto'>
+      <div className='bg-gradient-to-r from-blue-900 to-slate-900 w-full h-[120vh] max-lg:h-auto p-[50px]'>
+       <div className='p-[10px] bg-chart w-[60%] rounded-[20px] h-auto m-auto max-lg:w-full  max-lg:p-0 '>
          <div className='flex flex-col  items-center gap-[20px] m-auto mt-[10px]'>
            <img
             className='w-[70px]'
@@ -67,7 +67,7 @@ fetchChartData();
          <LineChart chartData={chartData} />
          </div>
 
-         <div className='flex justify-evenly text-center items-center'>
+         <div className='flex justify-evenly text-center items-center  max-lg:flex-col'>
          <div>
          <h2 className='text-gray-400'> 24h Market High</h2>
          <p className='text-gray-200 text-[1.4rem]'>{currency.symbol} {coinData.market_data.high_24h[currency.name].toLocaleString()}</p>
