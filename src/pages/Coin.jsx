@@ -4,11 +4,6 @@ import { CoinContext } from '../context/CoinContext';
 import { MoonLoader } from 'react-spinners';
 import LineChart from '../components/LineChart';
 
-
-
-
-
-
 const Coin = () => {
 
   const {coinId} = useParams();
