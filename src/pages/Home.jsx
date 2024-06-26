@@ -1,13 +1,42 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { CoinContext } from '../context/CoinContext';
 import { Link } from 'react-router-dom';
-
+import { FaRegStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
+import {db} from "../firebase";
+import {arrayUnion, doc, updateDoc} from "firebase/firestore";
+import { UserAuth } from '../context/AuthContext';
 
 const Home = () => {
 
      const {allCoin, currency} = useContext(CoinContext);
      const [displayCoin, setDisplayCoin] = useState([]);
      const [input, setInput] = useState("");
+
+        {/* for saving coin*/}
+        const [like, setLike] = useState(false);
+        const [saved, setSaved] = useState(true);
+        const {user} = UserAuth();
+        
+        const coinID = doc(db, "users", `${user?.email}`)
+
+        const saveCoin = async () => {
+          if(user?.email) {
+            setLike(!like)
+            setSaved(true)
+            await updateDoc(coinID, {
+              savedCoin : arrayUnion({
+                id: item.id,
+                name: item.name,
+                img: item.image
+              })
+            })
+          }
+          else{
+           alert('Please log in to save a Coin')
+          }
+        }
+
      
      const inputHandler = (event) => {
          setInput(event.target.value);
@@ -24,9 +53,10 @@ const Home = () => {
         setDisplayCoin(allCoin);
      },[allCoin])
 
+  
   return (
 
-<div className='bg-gradient-to-r from-blue-900 to-slate-900 w-full h-[150vh] max-lg:h-auto'> 
+<div className='bg-gradient-to-r from-blue-900 to-slate-900 w-full h-auto max-lg:h-auto'> 
  <div className=' flex flex-col  text-center gap-[20px] w-[600px] m-auto
  max-lg:w-full'>
 
@@ -50,8 +80,9 @@ required/>
  </div>
 
    {/*Table*/}
- <div className='w-[800px] m-auto rounded-[15px]  bg-gradient-to-t from-purple-900 to-blue-900 mt-[50px] max-lg:w-full'>
+ <div className='w-[800px] m-auto rounded-[15px]  bg-gradient-to-t from-purple-900 to-blue-900 mt-[50px] max-lg:w-full relative'>
     <div className='grid grid-cols-gridcol items-center p-[10px] text-gray-200 border-b-2 border-gray-500 max-lg:grid-cols-5 max-lg:text-center'>
+      <p>Save</p>
         <p>#</p>
         <p>Coins</p>
         <p>Price</p>
@@ -60,27 +91,34 @@ required/>
     </div>
 
     {
+     
         displayCoin.slice(0,10).map((item,index) =>(
-          <Link to={`/coin/${item.id}`}
+          <>
+          <div
           key={index}
           className='grid grid-cols-gridcol items-center p-[10px] text-white border-b-2 border-gray-500 max-lg:grid-cols-5 max-lg:text-center last:border-none max-lg:text-[0.7rem]'>
+        <p  onClick={saveCoin}>
+           {like ? ( <FaStar  size={20}/>)
+           : (<FaRegStar size={20}/>)}
+        </p>
         <p>{item.market_cap_rank}</p>
-
-        <div className='flex items-center gap-[10px] max-lg:flex-col'>
+  
+    
+        <Link
+        to={`/coin/${item.id}`}
+         className='flex items-center gap-[10px] max-lg:flex-col'>
            <img
-           
            className='w-[35px]'
            src={item.image} alt={item.name}/>
            <p>{item.name + " - " + item.symbol}</p>
-        </div>
-
+        </Link>
         <p>{currency.symbol} {item.current_price.toLocaleString()}</p>
-
         <p 
         className={item.price_change_percentage_24h > 0 ? "text-green-500 text-center" :  "text-red-500 text-center"}>{Math.floor(item.price_change_percentage_24h * 100)/100}</p>
         <p className='text-right max-lg:text-center max-lg:text-[0.6rem]'>{currency.symbol} {item.market_cap.toLocaleString()}</p>
-
-          </Link>
+          </div>
+    
+          </>
         ))
     }
  </div>

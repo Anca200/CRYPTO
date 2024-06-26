@@ -88,12 +88,12 @@ const Navbar = () => {
 
     {user?.email ?
         <div>
-        <Link to="/account"> <button className='text-white pr-4'>Account</button></Link>
-        <button  onClick={handleLogOut} className='bg-red-600 px-6 py-2 rounded cursor-pointer text-white'>LogOut</button> 
-        </div> :
-        <div>
-       {/*Register*/}
-       <Link to="/log">
+        <Link to="/account"> <button className='text-white pr-4'>WatchList</button></Link>
+        <button  onClick={handleLogOut} className='bg-blue-900 px-6 py-2 cursor-pointer text-white rounded-[10px'>
+        LogOut</button></div> : <div>
+
+        {/*Register*/}
+    <Link to="/log">
      <button className='bg-transparent  border-2 border-solid p-[0.2rem] text-gray-200  rounded-[10px]'>
     Log In</button></Link>
    <Link to="/sign">
