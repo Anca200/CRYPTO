@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { CoinContext } from '../context/CoinContext';
 import { Link } from 'react-router-dom';
-import { FaRegStar } from "react-icons/fa";
-import { FaStar } from "react-icons/fa";
 import {db} from "../firebase";
 import {arrayUnion, doc, updateDoc} from "firebase/firestore";
 import { UserAuth } from '../context/AuthContext';
@@ -82,7 +80,6 @@ required/>
    {/*Table*/}
  <div className='w-[800px] m-auto rounded-[15px]  bg-gradient-to-t from-purple-900 to-blue-900 mt-[50px] max-lg:w-full relative'>
     <div className='grid grid-cols-gridcol items-center p-[10px] text-gray-200 border-b-2 border-gray-500 max-lg:grid-cols-5 max-lg:text-center'>
-      <p>Save</p>
         <p>#</p>
         <p>Coins</p>
         <p>Price</p>
@@ -97,10 +94,7 @@ required/>
           <div
           key={index}
           className='grid grid-cols-gridcol items-center p-[10px] text-white border-b-2 border-gray-500 max-lg:grid-cols-5 max-lg:text-center last:border-none max-lg:text-[0.7rem]'>
-        <p  onClick={saveCoin}>
-           {like ? ( <FaStar  size={20}/>)
-           : (<FaRegStar size={20}/>)}
-        </p>
+
         <p>{item.market_cap_rank}</p>
   
     

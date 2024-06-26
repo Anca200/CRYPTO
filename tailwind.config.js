@@ -11,7 +11,7 @@ export default {
          "watchList" : "rgb(3, 21, 37)"
       },
       gridTemplateColumns: {
-        'gridcol': '0.5fr 0.5fr 2fr 1fr 1fr 1.5fr'
+        'gridcol': ' 0.5fr 2fr 1fr 1fr 1.5fr'
     },
    border: ['last'],
    animation: {
