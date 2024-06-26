@@ -19,7 +19,7 @@ const SavedCoins = () => {
       try {
         const result = movies.filter((item) => item.id !== passedID)
         await updateDoc(movieRef, {
-            savedShows: result
+            savedCoin: result
         })
       } catch (error) {
           console.log(error)
@@ -30,28 +30,23 @@ const SavedCoins = () => {
    <>
 
     {/*Table*/}
- <div className='w-[800px] m-auto rounded-[15px]  bg-gradient-to-t from-purple-900 to-blue-900 mt-[50px] max-lg:w-full relative'>
-    <div className='grid grid-cols-gridcol items-center p-[10px] text-gray-200 border-b-2 border-gray-500 max-lg:grid-cols-5 max-lg:text-center'>
-      <p>Save</p>
-        <p>#</p>
-        <p>Coins</p>
-        <p>Price</p>
-        <p className='text-center '>24H </p>
-        <p className='text-right max-lg:text-center'>Market Cap</p>
+ <div className='w-[250px]  rounded-[15px]  bg-chart  max-lg:w-full  items-center text-center absolute top-[100px] left-[500px]'>
+    <div className='flex items-center p-[10px] text-gray-200 border-b-2 border-gray-500 max-lg:grid-cols-5 max-lg:text-center '>
     </div>
 
     { movies?.map((item,index) =>(
           <>
        <div key={index}
-          className='grid grid-cols-gridcol items-center p-[10px] text-white border-b-2 border-gray-500 max-lg:grid-cols-5 max-lg:text-center last:border-none max-lg:text-[0.7rem]'>
-<p>{item.market_cap_rank}</p>
-  
+          className='grid grid-cols-4 items-center p-[10px] text-white border-b-2 border-gray-500 max-lg:grid-cols-5 max-lg:text-center last:border-none max-lg:text-[0.7rem]'>
+            <div className='flex items-center gap-[10px] max-lg:flex-col'>
         <div
-         className='flex items-center gap-[10px] max-lg:flex-col'>
+         className='flex items-center gap-[10px] max-lg:flex-col '>
            <img
-           className='w-[35px]'
+           className='w-[55px]'
            src={item.img} alt={item.name}/>
-           <p>{item.name }</p>  
+           <p className='text-[2rem]'>{item.name }</p>  
+           <p className='absolute right-[10px] cursor-pointer text-[1.5rem]' onClick={()=> deleteShow(item.id)}>x</p>   
+        </div>
         </div>
           </div>
           </>

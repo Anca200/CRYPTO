@@ -12,7 +12,8 @@ export default {
          "chart" : "rgb(56, 89, 139)"
       },
       gridTemplateColumns: {
-        'gridcol': '0.5fr 0.5fr 2fr 1fr 1fr 1.5fr'
+        'gridcol': '0.5fr 0.5fr 2fr 1fr 1fr 1.5fr',
+        "gridWatch" : ' 2fr 1fr 1fr 1.5fr'
     },
    border: ['last'],
    animation: {
