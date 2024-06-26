@@ -8,7 +8,8 @@ export default {
     extend: {
 
       backgroundColor:{
-         "watchList" : "rgb(3, 21, 37)"
+         "watchList" : "rgb(3, 21, 37)",
+         "chart" : "rgb(56, 89, 139)"
       },
       gridTemplateColumns: {
         'gridcol': '0.5fr 0.5fr 2fr 1fr 1fr 1.5fr'

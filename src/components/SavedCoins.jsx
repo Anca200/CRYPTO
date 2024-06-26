@@ -4,9 +4,29 @@ import {db} from "../firebase";
 import { updateDoc, doc, onSnapshot } from 'firebase/firestore';
 
 const SavedCoins = () => {
-    const {user} = UserAuth()
+    const {user} = UserAuth();
+   const [movies,setMovie] = useState([])
 
+
+   useEffect(() => {
+    onSnapshot(doc(db, 'users', `${user?.email}`), (doc) => {
+      setMovie(doc.data()?.savedCoin);
+    });
+  }, [user?.email]);
+
+  const movieRef = doc(db, 'users', `${user?.email}`)
+  const deleteShow = async (passedID) => {
+      try {
+        const result = movies.filter((item) => item.id !== passedID)
+        await updateDoc(movieRef, {
+            savedShows: result
+        })
+      } catch (error) {
+          console.log(error)
+      }
+  }
   return (
+    
    <>
 
     {/*Table*/}
@@ -20,26 +40,19 @@ const SavedCoins = () => {
         <p className='text-right max-lg:text-center'>Market Cap</p>
     </div>
 
-    { displayCoin.map((item,index) =>(
+    { movies?.map((item,index) =>(
           <>
-       <div
+       <div key={index}
           className='grid grid-cols-gridcol items-center p-[10px] text-white border-b-2 border-gray-500 max-lg:grid-cols-5 max-lg:text-center last:border-none max-lg:text-[0.7rem]'>
 <p>{item.market_cap_rank}</p>
   
-    
-        <Link
-        to={`/coin/${item.id}`}
+        <div
          className='flex items-center gap-[10px] max-lg:flex-col'>
            <img
            className='w-[35px]'
            src={item.img} alt={item.name}/>
-           <p>{item.name + " - " + item.symbol}</p>
-           
-        </Link>
-        <p>{currency.symbol} {item.current_price.toLocaleString()}</p>
-        <p 
-        className={item.price_change_percentage_24h > 0 ? "text-green-500 text-center" :  "text-red-500 text-center"}>{Math.floor(item.price_change_percentage_24h * 100)/100}</p>
-        <p className='text-right max-lg:text-center max-lg:text-[0.6rem]'>{currency.symbol} {item.market_cap.toLocaleString()}</p>
+           <p>{item.name }</p>  
+        </div>
           </div>
           </>
         ))

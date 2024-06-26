@@ -4,6 +4,8 @@ import { CoinContext } from '../context/CoinContext';
 import { MoonLoader } from 'react-spinners';
 import LineChart from '../components/LineChart';
 
+
+
 const Coin = () => {
 
   const {coinId} = useParams();
@@ -49,18 +51,19 @@ fetchChartData();
 
   if(coinData && chartData) {
     return (
-      <div className='bg-gradient-to-r from-blue-900 to-slate-900 w-full h-[150vh] max-lg:h-auto'>
-       <div className='p-[10px]'>
-         <div className='flex flex-col items-center gap-[20px] m-auto mt-[100px] mb-[50px]'>
+      <div className='bg-gradient-to-r from-blue-900 to-slate-900 w-full h-[150vh] max-lg:h-auto p-[50px]'>
+       <div className='p-[10px] bg-chart w-[60%] rounded-[20px] h-[500px] m-auto'>
+         <div className='flex items-center gap-[20px] m-auto mt-[10px] mb-[50px] '>
            <img
-            className='w-[100px]'
+            className='w-[80px]'
            src={coinData.image.large} alt={coinData.name}/>
-           <p className='text-[3rem] font-bold text-white'>{coinData.name} ({coinData.symbol.toUpperCase()})</p>
+           <p className='text-[2rem] font-bold text-white'>{coinData.name}  <span className='text-[1rem]'>({coinData.symbol.toUpperCase()})</span></p>
+           <p>{currency.symbol} {coinData.market_data.current_price[currency.name].toLocaleString()}</p>
          </div>
 
          {/* Chart */}
-         <div className='w-[600px] h-[250px] m-auto max-lg:w-full'>
-         <LineChart chartData={chartData}/>
+         <div className='w-[800px] h-[350px] m-auto max-lg:w-full '>
+         <LineChart chartData={chartData} />
          </div>
 
          <div className='w-[600px] m-auto mt-[200px] flex flex-col max-lg:w-full'>
