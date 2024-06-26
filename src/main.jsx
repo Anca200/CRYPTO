@@ -10,7 +10,9 @@ import CoinContextProvider from './context/CoinContext.jsx';
 import Footer from './components/Footer.jsx';
 import SignUp from './pages/SignUp.jsx';
 import LogIn from './pages/LogIn.jsx';
-
+import { AuthContextProvider } from './context/AuthContext.jsx';
+import Account from "./pages/Account.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx"
 
 const router = createBrowserRouter ([
   {
@@ -30,6 +32,13 @@ const router = createBrowserRouter ([
     },
     { path: "/log",
       element:<LogIn/>
+    },
+    {
+      path: "/account",
+      element:
+      <ProtectedRoute>
+      <Account/>
+      </ProtectedRoute>   
     }
   ]
   }
@@ -37,11 +46,11 @@ const router = createBrowserRouter ([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-
+    <AuthContextProvider>
     <CoinContextProvider>
     <RouterProvider router={router}/>
     <Footer/>
     </CoinContextProvider>
-  
+    </AuthContextProvider>
   </React.StrictMode>,
 )
